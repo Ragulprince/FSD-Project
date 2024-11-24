@@ -1,133 +1,143 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './header';
 import Footer from './footer';
-import ProfessionalChatbot from './bot'; 
-import { Package, ShoppingCart, DollarSign, Users, Bot, X, Search } from 'lucide-react';
+import ProfessionalChatbot from './bot';
+import { Package, ShoppingCart, Users, Bot, X, Search } from 'lucide-react';
 
 const Dashboard = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [stats, setStats] = useState({
+    totalOrders: 0,
+    productsInStock: 0,
+    activeCustomers: 0,
+  });
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND || 'http://127.0.0.1:3001'}/dashboard-stats`
+        );
+        const data = await response.json();
+        setStats(data);
+      } catch (error) {
+        console.error('Error fetching dashboard stats:', error);
+      }
+    };
+
+    fetchStats();
+  }, []);
 
   const statsCards = [
-    { 
-      title: 'Total Orders', 
-      value: '1,234', 
-      icon: <ShoppingCart className="text-blue-600 w-6 h-6" />,
-      trend: '+12% from last month'
+    {
+      title: 'Total Orders',
+      value: stats.totalOrders.toLocaleString(),
+      icon: <ShoppingCart className="text-blue-600 w-5 h-5" />,
+      bgColor: 'bg-blue-50',
     },
-    { 
-      title: 'Products in Stock', 
-      value: '892', 
-      icon: <Package className="text-blue-600 w-6 h-6" />,
-      trend: '-3% from last month'
+    {
+      title: 'Products in Stock',
+      value: stats.productsInStock.toLocaleString(),
+      icon: <Package className="text-blue-600 w-5 h-5" />,
+      bgColor: 'bg-blue-50',
     },
-    { 
-      title: 'Revenue', 
-      value: '$45,678', 
-      icon: <DollarSign className="text-blue-600 w-6 h-6" />,
-      trend: '+8% from last month'
+    {
+      title: 'Active Customers',
+      value: stats.activeCustomers.toLocaleString(),
+      icon: <Users className="text-blue-600 w-5 h-5" />,
+      bgColor: 'bg-blue-50',
     },
-    { 
-      title: 'Active Customers', 
-      value: '456', 
-      icon: <Users className="text-blue-600 w-6 h-6" />,
-      trend: '+5% from last month'
-    }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 font-sans">
       <Header />
-      
+
       <main className="p-4 md:p-8 max-w-7xl mx-auto">
-        {/* Dashboard Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
-            Admin Dashboard
+        {/* Main Chatbot Section */}
+        <div className="mb-12 text-center">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-4 tracking-tight">
+            QueryBot
+            <span className="text-blue-600">Assistant</span>
           </h1>
-          <p className="text-gray-600">
-            Manage your e-commerce platform efficiently
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+            Your intelligent e-commerce companion for seamless data management and insights
           </p>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          {statsCards.map((card, index) => (
-            <div 
-              key={index} 
-              className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-2 bg-blue-50 rounded-lg">
-                  {card.icon}
-                </div>
+        <div className="max-w-4xl mx-auto mb-16">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100">
+            <div className="flex justify-center mb-6">
+              <div className="bg-blue-100 p-4 rounded-full">
+                <Bot className="w-10 h-10 text-blue-600" />
               </div>
-              <div>
-                <p className="text-gray-600 text-sm mb-1">{card.title}</p>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                  {card.value}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  {card.trend}
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 p-6 rounded-xl border border-blue-200">
+                <h3 className="font-semibold text-blue-900 mb-2 text-lg">Order Management</h3>
+                <p className="text-slate-700">
+                  View order details, track status, and manage fulfillment
+                </p>
+              </div>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 p-6 rounded-xl border border-blue-200">
+                <h3 className="font-semibold text-blue-900 mb-2 text-lg">Inventory Tracking</h3>
+                <p className="text-slate-700">
+                  Check stock levels and product details
+                </p>
+              </div>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100/50 p-6 rounded-xl border border-blue-200">
+                <h3 className="font-semibold text-blue-900 mb-2 text-lg">Specific Orders Status</h3>
+                <p className="text-slate-700">
+                  Get instant information of a particular order
                 </p>
               </div>
             </div>
-          ))}
-        </div>
 
-        {/* QueryBot Section */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <div className="bg-white rounded-xl p-8 shadow-md border border-gray-200">
-            <div className="flex justify-center mb-4">
-              <div className="bg-blue-100 p-3 rounded-full">
-                <Bot className="w-8 h-8 text-blue-600" />
-              </div>
-            </div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              Meet QueryBot - Your E-Commerce Chatbot Assistant
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Quickly access and manage your e-commerce data .
-              QueryBot connects directly to your database to provide:
-            </p>
-            <div className="grid md:grid-cols-3 gap-4 text-left mb-6">
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-800 mb-2">Order Management</h3>
-                <p className="text-sm text-gray-600">View order details, track status, and manage fulfillment</p>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-800 mb-2">Inventory Tracking</h3>
-                <p className="text-sm text-gray-600">Check stock levels and product details</p>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-800 mb-2">Specific Orders Status</h3>
-                <p className="text-sm text-gray-600">Get instant information of a particular order</p>
-              </div>
-            </div>
             <button
               onClick={() => setIsChatOpen(true)}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center gap-2 mx-auto"
+              className="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition-all duration-300 flex items-center gap-3 mx-auto text-lg font-medium shadow-md hover:shadow-xl"
             >
               <Search className="w-5 h-5" />
               Start Querying Data
             </button>
           </div>
         </div>
+
+        {/* Stats Section */}
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-xl text-slate-700 mb-4 text-center font-medium">Platform Overview</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {statsCards.map((card, index) => (
+              <div
+                key={index}
+                className={`${card.bgColor} p-6 rounded-xl shadow-sm border border-blue-200 hover:shadow-md transition-all duration-300`}
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="p-2 bg-white/80 rounded-lg">{card.icon}</div>
+                  <p className="text-blue-900 font-medium">{card.title}</p>
+                </div>
+                <h3 className="text-2xl font-bold text-slate-800">{card.value}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
       </main>
-    {isChatOpen && (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 animate-fadeIn">
-        <div className="w-full max-w-4xl h-[600px] shadow-2xl relative animate-slideUp">
-          <div className="absolute -top-2 -right-2 z-50">
-            <button 
+
+      {/* Chatbot Modal */}
+      {isChatOpen && (
+        <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
+          <div className="w-full max-w-4xl h-[600px] bg-white rounded-2xl shadow-2xl relative animate-slideUp">
+            <button
               onClick={() => setIsChatOpen(false)}
-              className="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+              className="absolute -top-3 -right-3 bg-red-500 hover:bg-red-600 text-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
             >
               <X className="w-5 h-5" />
             </button>
+            <ProfessionalChatbot />
           </div>
-          <ProfessionalChatbot />
         </div>
-      </div>
-    )}
+      )}
 
       <Footer />
     </div>

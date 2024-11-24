@@ -13,4 +13,5 @@ func SetupRoutes(app *fiber.App) {
 	api.Post("/get_order_date", controllers.GetOrdersByDate)
 	api.Get("/get_invs", controllers.GetInventories)
 	api.Post("/get_inv", controllers.GetInventoriesByID)
+	api.Get("/dashboard-stats", controllers.GetDashboardStats)
 }
