@@ -20,10 +20,8 @@ const ProfessionalChatbot = () => {
     sender: 'bot',
     options: ['View Orders', 'Get specific order status/details', 'Inventory details'],
   };
-
-  useEffect(() => {
-    setMessages([welcomeMessage]);
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { setMessages([welcomeMessage]);  }, []);
 
   useEffect(() => {
     scrollToBottom();
