@@ -3,7 +3,7 @@ import Header from './header';
 import Footer from './footer';
 import { Link } from 'react-router-dom';
 
-// Feature Card component
+
 const FeatureCard = ({ icon, title, description }) => (
   <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
     {icon}
@@ -12,7 +12,7 @@ const FeatureCard = ({ icon, title, description }) => (
   </div>
 );
 
-// Main Landing Page component
+
 const LandingPage = () => {
   return (
     <div className="min-h-screen bg-gray-100">
@@ -32,7 +32,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      
       <section id="features" className="py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">Powerful Features for E-commerce Management</h2>
@@ -56,7 +56,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* How It Works Section */}
+      
       <section id="how-it-works" className="bg-gray-200 py-20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">How OrderMaster Works</h2>
@@ -80,12 +80,12 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Call to Action Section */}
+      
       <section id="cta" className="bg-blue-600 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Optimize Your E-commerce Management?</h2>
           <p className="text-xl mb-8">Join successful businesses using OrderMaster to streamline their operations</p>
-          <a href="#" className="bg-white text-blue-600 py-3 px-8 rounded-full font-semibold text-lg hover:bg-blue-100 transition duration-300">Start Your Free Trial</a>
+          <span className="bg-white text-blue-600 py-3 px-8 rounded-full font-semibold text-lg hover:bg-blue-100 transition duration-300">Start Your Free Trial</span>
         </div>
       </section>
 

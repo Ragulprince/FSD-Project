@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-// Logo component
+
 const Logo = () => (
   <Link to="/" className="flex items-center">
   <svg
@@ -27,7 +27,7 @@ export default function Header() {
 
   return (
     <div>
-      {/* Header */}
+      
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center">
@@ -35,7 +35,7 @@ export default function Header() {
             <span className="ml-2 text-xl font-bold text-gray-800">OrderMaster</span>
           </div>
 
-          {/* Desktop Navigation */}
+          
           <nav className="hidden md:flex">
             <ul className="flex space-x-4">
               <li>
@@ -56,7 +56,7 @@ export default function Header() {
             </ul>
           </nav>
 
-          {/* Mobile Menu Button */}
+          
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden text-gray-600 hover:text-blue-600 focus:outline-none"
@@ -72,7 +72,7 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        
         {isMenuOpen && (
           <nav className="md:hidden bg-white shadow-md">
             <ul className="space-y-2 py-2 px-4">

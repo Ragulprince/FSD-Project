@@ -1,8 +1,7 @@
-// AdminDashboard.jsx
 import { useState } from 'react';
 import Header from './header';
 import Footer from './footer';
-import ProfessionalChatbot from './bot'; // Add this import at the top
+import ProfessionalChatbot from './bot'; 
 import { Package, ShoppingCart, DollarSign, Users, Bot, X, Search } from 'lucide-react';
 
 const Dashboard = () => {
@@ -84,10 +83,10 @@ const Dashboard = () => {
               </div>
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              Meet QueryBot - Your Database Assistant
+              Meet QueryBot - Your E-Commerce Chatbot Assistant
             </h2>
             <p className="text-gray-600 mb-6">
-              Quickly access and manage your e-commerce data with natural language queries. 
+              Quickly access and manage your e-commerce data .
               QueryBot connects directly to your database to provide:
             </p>
             <div className="grid md:grid-cols-3 gap-4 text-left mb-6">
@@ -97,11 +96,11 @@ const Dashboard = () => {
               </div>
               <div className="bg-blue-50 p-4 rounded-lg">
                 <h3 className="font-semibold text-blue-800 mb-2">Inventory Tracking</h3>
-                <p className="text-sm text-gray-600">Check stock levels, low inventory alerts, and product details</p>
+                <p className="text-sm text-gray-600">Check stock levels and product details</p>
               </div>
               <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="font-semibold text-blue-800 mb-2">Quick Analytics</h3>
-                <p className="text-sm text-gray-600">Get instant insights on sales, revenue, and customer data</p>
+                <h3 className="font-semibold text-blue-800 mb-2">Specific Orders Status</h3>
+                <p className="text-sm text-gray-600">Get instant information of a particular order</p>
               </div>
             </div>
             <button
@@ -109,69 +108,26 @@ const Dashboard = () => {
               className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 flex items-center gap-2 mx-auto"
             >
               <Search className="w-5 h-5" />
-              Start Querying Database
+              Start Querying Data
             </button>
           </div>
         </div>
       </main>
-
-      {/* Chatbot Modal */}
-      {/* {isChatOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-xl w-full max-w-lg shadow-2xl">
-            <div className="bg-blue-600 p-4 rounded-t-xl flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Bot className="text-white w-6 h-6" />
-                <h3 className="text-white font-medium">QueryBot</h3>
-              </div>
-              <button 
-                onClick={() => setIsChatOpen(false)}
-                className="text-white hover:text-gray-200"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="p-6">
-              <div className="mb-4">
-                <p className="text-gray-600 mb-4">
-                  Try these example queries:
-                </p>
-                <ul className="text-sm text-gray-600 space-y-2">
-                  <li>• "Show all orders from last week"</li>
-                  <li>• "Check inventory for product SKU-123"</li>
-                  <li>• "List orders with pending status"</li>
-                </ul>
-              </div>
-              <div className="border-t pt-4">
-                <input
-                  type="text"
-                  placeholder="Type your query here..."
-                  className="w-full p-3 border rounded-lg focus:outline-none focus:border-blue-600"
-                />
-              </div>
-            </div>
+    {isChatOpen && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 animate-fadeIn">
+        <div className="w-full max-w-4xl h-[600px] shadow-2xl relative animate-slideUp">
+          <div className="absolute -top-2 -right-2 z-50">
+            <button 
+              onClick={() => setIsChatOpen(false)}
+              className="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+            >
+              <X className="w-5 h-5" />
+            </button>
           </div>
+          <ProfessionalChatbot />
         </div>
-      )} */}
-
-      {/* Chatbot Modal */}
-{/* Chatbot Modal */}
-{/* Chatbot Modal */}
-{isChatOpen && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 animate-fadeIn">
-    <div className="w-full max-w-4xl h-[600px] shadow-2xl relative animate-slideUp">
-      <div className="absolute -top-2 -right-2 z-50">
-        <button 
-          onClick={() => setIsChatOpen(false)}
-          className="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
-        >
-          <X className="w-5 h-5" />
-        </button>
       </div>
-      <ProfessionalChatbot />
-    </div>
-  </div>
-)}
+    )}
 
       <Footer />
     </div>
