@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Header from './header';
 import Footer from './footer';
+import ProfessionalChatbot from './bot'; // Add this import at the top
 import { Package, ShoppingCart, DollarSign, Users, Bot, X, Search } from 'lucide-react';
 
 const Dashboard = () => {
@@ -115,7 +116,7 @@ const Dashboard = () => {
       </main>
 
       {/* Chatbot Modal */}
-      {isChatOpen && (
+      {/* {isChatOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white rounded-xl w-full max-w-lg shadow-2xl">
             <div className="bg-blue-600 p-4 rounded-t-xl flex items-center justify-between">
@@ -151,7 +152,26 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-      )}
+      )} */}
+
+      {/* Chatbot Modal */}
+{/* Chatbot Modal */}
+{/* Chatbot Modal */}
+{isChatOpen && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 animate-fadeIn">
+    <div className="w-full max-w-4xl h-[600px] shadow-2xl relative animate-slideUp">
+      <div className="absolute -top-2 -right-2 z-50">
+        <button 
+          onClick={() => setIsChatOpen(false)}
+          className="bg-red-500 hover:bg-red-600 text-white rounded-full p-2 shadow-lg transition-all duration-200 hover:scale-110"
+        >
+          <X className="w-5 h-5" />
+        </button>
+      </div>
+      <ProfessionalChatbot />
+    </div>
+  </div>
+)}
 
       <Footer />
     </div>
