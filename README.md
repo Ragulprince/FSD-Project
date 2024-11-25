@@ -17,6 +17,31 @@ A powerful admin chatbot interface for managing your ecommerce store. Built with
 - **Database**: PostgreSQL
 - **Development Tools**: Air (Live Reload)
 
+## 📸 Project Screenshots
+
+### Landing Page
+![Landing Page](./frontend/public/screenshot/landingpage.png)
+*Landing page of E-Commerce Platform*
+
+### Admin Dashboard
+![Dashboard](./frontend/public/screenshot/dashboard.png)
+*Comprehensive Chatbot with dashboard showing key metrics and controls*
+
+### Chatbot Interactions
+
+#### 1. Chatbot UI 
+![Chatbot - Orders List](./frontend/public/screenshot/chatbot1.png)
+*Chatbot displaying list of all orders with pagination*
+
+#### 2. Chatbot Responses
+![Chatbot - Order Status](./frontend/public/screenshot/chatbot2.png)
+*Checking specific order status and details*
+
+#### 3. Mobile View of Chatbot
+![Chatbot - Inventory](./frontend/public/screenshot/chatbot3.png)
+*Real-time inventory status and stock levels*
+
+
 ## 📋 Prerequisites
 
 Before you begin, ensure you have the following installed:
