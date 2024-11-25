@@ -39,7 +39,7 @@ A powerful admin chatbot interface for managing your ecommerce store. Built with
 
 #### 3. Mobile View of Chatbot
 ![Chatbot - Inventory](./frontend/public/screenshot/chatbot3.png)
-*Real-time inventory status and stock levels*
+
 
 
 ## 📋 Prerequisites
