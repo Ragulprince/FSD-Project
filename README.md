@@ -31,7 +31,7 @@ A powerful admin chatbot interface for managing your ecommerce store. Built with
 
 #### 1. Chatbot UI 
 ![Chatbot - Orders List](./frontend/public/screenshot/chatbot1.png)
-*Chatbot displaying list of all orders with pagination*
+*Chatbot displaying list of all orders*
 
 #### 2. Chatbot Responses
 ![Chatbot - Order Status](./frontend/public/screenshot/chatbot2.png)
